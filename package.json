@@ -1,0 +1,10 @@
+{
+  "name": "short-video",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo for micro frontends",
+  "scripts": {
+    "build": "pnpm -r build",
+    "start": "pnpm --filter host start"
+  }
+}

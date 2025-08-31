@@ -4,8 +4,13 @@ This repository contains planning and documentation for building a TikTok-like s
 
 The documentation covers the product requirements, development plan, proposed technology stack, and monorepo project structure.
 
+## Monorepo Structure
+
+- `apps/host` – Angular host application configured with Webpack 5 Module Federation and Angular Router to load remote modules.
+- `packages/ui-kit` – Shared Angular UI component library exposing a styled `Button` component.
+
 ## Documentation
 - [Product Requirements and Technical Plan](docs/PRD.md)
 
 ## Status
-Planning phase only. Code implementation will be added in subsequent commits.
+Initial workspace setup with an Angular host and shared UI kit.

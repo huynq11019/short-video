@@ -7,8 +7,8 @@ import { UiKitModule } from '@short-video/ui-kit';
 const routes: Routes = [
   { path: '', component: AppComponent },
   {
-    path: 'remote',
-    loadChildren: () => import('remote/Module').then(m => m.RemoteModule)
+    path: 'feed',
+    loadChildren: () => import('feed/FeedModule').then(m => m.FeedModule)
   }
 ];
 

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       <sv-button (clicked)="onShared()">Shared Button</sv-button>
       <nav>
         <a routerLink="/">Home</a> |
-        <a routerLink="/remote">Remote</a>
+        <a routerLink="/feed">Feed</a>
       </nav>
     </header>
     <router-outlet></router-outlet>

@@ -26,10 +26,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'host',
+      name: 'feed',
       filename: 'remoteEntry.js',
-      remotes: {
-        feed: 'feed@http://localhost:3001/remoteEntry.js'
+      exposes: {
+        './FeedModule': './src/app/feed.module.ts'
       },
       shared: {
         '@angular/core': { singleton: true, strictVersion: true },
@@ -40,7 +40,7 @@ module.exports = {
     new HtmlWebpackPlugin({ template: './src/index.html' })
   ],
   devServer: {
-    port: 4200,
+    port: 3001,
     historyApiFallback: true
   }
 };

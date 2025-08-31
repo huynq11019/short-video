@@ -36,7 +36,7 @@
 - **Accessibility**: WCAG 2.1 AA, captions and alt text.
 - **Scalability**: microservice + micro-frontend with independent CI/CD.
 
-## 6. Technical Architecture
+## 6. Technology Stack
 ### 6.1 Frontend
 - Angular 16 host shell using Webpack 5 Module Federation.
 - Micro frontends can be written in Angular, React, Vue, or other frameworks and federated at runtime.
@@ -56,7 +56,30 @@
 - CI/CD via GitHub Actions; each microFE/service built & deployed independently.
 - Monitoring stack: Prometheus, Grafana, Sentry, Jaeger.
 
-## 7. Micro-Frontend Modules
+## 7. Project Structure
+
+```
+/
+├─ apps/
+│  ├─ host/        # Shell (Angular Universal)
+│  ├─ feed/        # microFE for feed
+│  ├─ player/      # microFE for video playback
+│  ├─ profile/     # microFE for user profiles
+│  ├─ auth/        # microFE for authentication
+│  └─ ...          # other micro frontends
+├─ packages/
+│  ├─ ui-kit/      # shared UI components
+│  ├─ shared-utils/# event bus, auth helpers
+│  └─ api-client/  # SDK for backend API
+├─ services/
+│  ├─ gateway/     # API gateway
+│  ├─ auth-service/
+│  ├─ video-service/
+│  ├─ feed-service/
+│  └─ comment-service/
+└─ docs/           # PRD, architecture, etc.
+```
+
 - **Host/Shell** – handles layout, routing, authentication context.
 - **Feed** – renders infinite video list.
 - **Video Player** – plays videos with controls.

@@ -42,6 +42,7 @@
 - Micro frontends can be written in Angular, React, Vue, or other frameworks and federated at runtime.
 - Shared state via RxJS event bus or NgRx for Angular-based modules.
 - TailwindCSS-based UI kit shared via `packages/ui-kit`.
+- Player micro frontend leverages Tailwind CSS utility classes for layout and styling.
 - SSR or pre-render using Angular Universal (or each microFE's native solution).
 - Video playback using `hls.js` or `video.js`.
 

@@ -5,6 +5,7 @@
   "description": "Monorepo for micro frontends",
   "scripts": {
     "build": "pnpm -r build",
-    "start": "pnpm --filter host start"
+    "start": "pnpm --filter host start",
+    "start:feed": "pnpm --filter feed start"
   }
 }

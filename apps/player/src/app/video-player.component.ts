@@ -5,6 +5,7 @@ import Player from 'player.js';
 @Component({
   selector: 'app-video-player',
   template: `
+    <sv-button (clicked)="toggleMute()">Toggle Mute</sv-button>
     <ng-container *ngIf="isEmbed; else videoTpl">
       <iframe
         #frame
@@ -83,5 +84,12 @@ export class VideoPlayerComponent implements AfterViewInit, OnDestroy {
     this.observer?.disconnect();
     this.hls?.destroy();
     this.player?.pause();
+  }
+
+  toggleMute() {
+    const video = this.videoRef?.nativeElement;
+    if (video) {
+      video.muted = !video.muted;
+    }
   }
 }

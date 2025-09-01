@@ -4,6 +4,6 @@
   "main": "src/index.ts",
   "sideEffects": false,
   "dependencies": {
-    "@short-video/event-bus": "workspace:*"
+    "rxjs": "^7.8.1"
   }
 }

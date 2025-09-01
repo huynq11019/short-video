@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { onEvent, ANALYTICS_EVENTS } from '@short-video/shared-utils';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,20 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+  private unsub: () => void;
+
+  constructor() {
+    this.unsub = onEvent(ANALYTICS_EVENTS.VIDEO_VIEWED, data => {
+      console.log('Analytics event', data);
+    });
+  }
+
   onShared() {
     alert('Shared Button');
+  }
+
+  ngOnDestroy() {
+    this.unsub && this.unsub();
   }
 }

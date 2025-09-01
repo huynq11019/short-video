@@ -15,7 +15,8 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
-    "@short-video/event-bus": "workspace:*"
+    "@short-video/shared-utils": "workspace:*",
+    "@short-video/ui-kit": "workspace:*"
   },
   "devDependencies": {
     "@angular-architects/module-federation": "^16.0.0",

@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { createClient } from '@supabase/supabase-js';
-import { getToken, authEventBus, AUTH_EVENTS } from '@short-video/shared-utils';
+import { getToken, clearToken, authEventBus, AUTH_EVENTS } from '@short-video/shared-utils';
 
 const supabaseUrl = 'SUPABASE_URL';
 const supabaseKey = 'SUPABASE_KEY';
@@ -15,6 +15,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
       <ul>
         <li *ngFor="let v of videos">{{v.title}}</li>
       </ul>
+      <sv-button (clicked)="logout()">Logout</sv-button>
     </div>
     <ng-template #loggedOut>
       <p>Please log in.</p>
@@ -50,5 +51,13 @@ export class ProfileComponent implements OnDestroy {
     if (!this.user) return;
     const { data } = await supabase.from('videos').select('*').eq('user_id', this.user.id);
     this.videos = data || [];
+  }
+
+  async logout() {
+    await supabase.auth.signOut();
+    clearToken();
+    authEventBus.emit(AUTH_EVENTS.AUTH_CHANGED, null);
+    this.user = null;
+    this.videos = [];
   }
 }

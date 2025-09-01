@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { apiFetch } from '@short-video/shared-utils';
 
 export interface Video {
   id: number;
@@ -17,7 +18,11 @@ export class VideoService {
   private pageSize = 10;
 
   async getVideos(page: number): Promise<Video[]> {
-    const start = page * this.pageSize;
-    return MOCK_VIDEOS.slice(start, start + this.pageSize);
+    try {
+      return await apiFetch<Video[]>(`/videos?page=${page}`);
+    } catch {
+      const start = page * this.pageSize;
+      return MOCK_VIDEOS.slice(start, start + this.pageSize);
+    }
   }
 }

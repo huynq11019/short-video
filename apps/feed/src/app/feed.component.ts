@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChildren, ElementRef, QueryList, HostListener } from '@angular/core';
 import { VideoService, Video } from './video.service';
-import { eventBus, EVENTS } from '@short-video/event-bus';
+import { trackEvent, ANALYTICS_EVENTS } from '@short-video/shared-utils';
 
 @Component({
   selector: 'app-feed',
@@ -10,6 +10,7 @@ import { eventBus, EVENTS } from '@short-video/event-bus';
       <video width="320" height="240" controls [src]="video.src"></video>
     </div>
     <div *ngIf="loading" class="loading">Loading...</div>
+    <sv-button (clicked)="loadMore()">Load More</sv-button>
   `,
   styles: ['.video{margin-bottom:24px;}']
 })
@@ -35,7 +36,7 @@ export class FeedComponent implements AfterViewInit {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = Number((entry.target as HTMLElement).dataset['id']);
-          eventBus.emit(EVENTS.VIDEO_VIEWED, { id });
+          trackEvent(ANALYTICS_EVENTS.VIDEO_VIEWED, { id });
           observer.unobserve(entry.target);
         }
       });
@@ -50,7 +51,7 @@ export class FeedComponent implements AfterViewInit {
     }
   }
 
-  private loadMore() {
+  loadMore() {
     this.loading = true;
     this.videoService.getVideos(this.page++).then(newVideos => {
       this.videos = this.videos.concat(newVideos);

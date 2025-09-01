@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: host
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: host
+  template:
+    metadata:
+      labels:
+        app: host
+    spec:
+      containers:
+        - name: host
+          image: ghcr.io/your-org/host:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: FEED_REMOTE_URL
+              value: http://feed/remoteEntry.js
+            - name: SUPABASE_URL
+              value: https://your-supabase-url
+            - name: SUPABASE_ANON_KEY
+              value: your-supabase-anon-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: host
+spec:
+  selector:
+    app: host
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

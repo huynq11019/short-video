@@ -14,14 +14,14 @@ const supabase = createClient(supabaseUrl, supabaseKey);
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <input type="email" formControlName="email" placeholder="Email" required />
       <input type="password" formControlName="password" placeholder="Password" required />
-      <button type="submit">Login</button>
+      <sv-button>Login</sv-button>
     </form>
 
     <h2>Register</h2>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
       <input type="email" formControlName="email" placeholder="Email" required />
       <input type="password" formControlName="password" placeholder="Password" required />
-      <button type="submit">Register</button>
+      <sv-button>Register</sv-button>
     </form>
     <p>{{message}}</p>
   `

@@ -16,7 +16,8 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "hls.js": "^1.4.12",
-    "player.js": "^0.1.0"
+    "player.js": "^0.1.0",
+    "@short-video/ui-kit": "workspace:*"
   },
   "devDependencies": {
     "@angular-architects/module-federation": "^16.0.0",

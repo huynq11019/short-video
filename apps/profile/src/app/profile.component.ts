@@ -1,10 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { createClient } from '@supabase/supabase-js';
-import { getToken, clearToken, authEventBus, AUTH_EVENTS } from '@short-video/shared-utils';
-
-const supabaseUrl = 'SUPABASE_URL';
-const supabaseKey = 'SUPABASE_KEY';
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { getToken, clearToken, authEventBus, AUTH_EVENTS, supabase } from '@short-video/shared-utils';
 
 @Component({
   selector: 'app-root',

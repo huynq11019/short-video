@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { createClient } from '@supabase/supabase-js';
-import { setToken, authEventBus, AUTH_EVENTS } from '@short-video/shared-utils';
-
-const supabaseUrl = 'SUPABASE_URL';
-const supabaseKey = 'SUPABASE_KEY';
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { setToken, authEventBus, AUTH_EVENTS, supabase } from '@short-video/shared-utils';
 
 @Component({
   selector: 'app-root',

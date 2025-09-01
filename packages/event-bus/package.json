@@ -2,5 +2,11 @@
   "name": "@short-video/event-bus",
   "version": "0.0.1",
   "main": "src/index.ts",
-  "sideEffects": false
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
 }

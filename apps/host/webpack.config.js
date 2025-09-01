@@ -29,7 +29,7 @@ module.exports = {
       name: 'host',
       filename: 'remoteEntry.js',
       remotes: {
-        feed: 'feed@http://localhost:3001/remoteEntry.js'
+        feed: `feed@${process.env.FEED_REMOTE_URL || 'http://localhost:3001/remoteEntry.js'}`
       },
       shared: {
         '@angular/core': { singleton: true, strictVersion: true },

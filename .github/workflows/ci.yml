@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - apps/auth
+          - apps/comments
+          - apps/feed
+          - apps/host
+          - apps/player
+          - apps/profile
+          - packages/event-bus
+          - packages/shared-utils
+          - packages/ui-kit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm --filter "${{ matrix.project }}" run build
+      - run: pnpm --filter "${{ matrix.project }}" run test --if-present

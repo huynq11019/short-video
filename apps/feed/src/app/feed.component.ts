@@ -5,13 +5,15 @@ import { trackEvent, ANALYTICS_EVENTS } from '@short-video/shared-utils';
 @Component({
   selector: 'app-feed',
   template: `
-    <div class="video" *ngFor="let video of videos" #videoRef [attr.data-id]="video.id">
-      <h3>{{video.title}}</h3>
-      <video width="320" height="240" controls [src]="video.src"></video>
-    </div>
-    <div *ngIf="loading" class="loading">Loading...</div>
-    <sv-button (clicked)="loadMore()">Load More</sv-button>
-  `,
+      <div class="video" *ngFor="let video of videos" #videoRef [attr.data-id]="video.id">
+        <h3>{{video.title}}</h3>
+        <video width="320" height="240" controls [src]="video.src"></video>
+        <div>Likes: {{video.likes || 0}}</div>
+        <sv-button (clicked)="like(video)">Like</sv-button>
+      </div>
+      <div *ngIf="loading" class="loading">Loading...</div>
+      <sv-button (clicked)="loadMore()">Load More</sv-button>
+    `,
   styles: ['.video{margin-bottom:24px;}']
 })
 export class FeedComponent implements AfterViewInit {
@@ -55,7 +57,14 @@ export class FeedComponent implements AfterViewInit {
     this.loading = true;
     this.videoService.getVideos(this.page++).then(newVideos => {
       this.videos = this.videos.concat(newVideos);
+      newVideos.forEach(v =>
+        this.videoService.onLikes(v.id, count => (v.likes = count))
+      );
       this.loading = false;
     });
+  }
+
+  like(video: Video) {
+    this.videoService.likeVideo(video.id);
   }
 }

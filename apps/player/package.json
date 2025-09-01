@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "webpack serve --config webpack.config.js --mode development --open",
-    "build": "webpack --config webpack.config.js --mode production"
+    "build": "webpack --config webpack.config.js --mode production",
+    "test": "jest"
   },
   "dependencies": {
     "@angular/animations": "^16.0.0",
@@ -17,7 +18,8 @@
     "@angular/router": "^16.0.0",
     "hls.js": "^1.4.12",
     "player.js": "^0.1.0",
-    "@short-video/ui-kit": "workspace:*"
+    "@short-video/ui-kit": "workspace:*",
+    "@short-video/monitoring": "workspace:*"
   },
   "devDependencies": {
     "@angular-architects/module-federation": "^16.0.0",

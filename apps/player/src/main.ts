@@ -1,2 +1,5 @@
 import './styles.css';
-import('./bootstrap').catch(err => console.error(err));
+import { initMonitoring, reportError } from '@short-video/monitoring';
+
+initMonitoring();
+import('./bootstrap').catch(reportError);

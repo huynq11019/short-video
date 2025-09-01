@@ -6,6 +6,7 @@ export interface Video {
   title: string;
   src: string;
   likes?: number;
+  comments?: number;
 }
 
 export interface Comment {
@@ -47,6 +48,23 @@ export class VideoService {
         async () => {
           const { count } = await supabase
             .from('likes')
+            .select('*', { count: 'exact', head: true })
+            .eq('video_id', videoId);
+          cb(count || 0);
+        }
+      )
+      .subscribe();
+  }
+
+  onCommentsCount(videoId: number, cb: (count: number) => void) {
+    return supabase
+      .channel('public:comments')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'comments', filter: `video_id=eq.${videoId}` },
+        async () => {
+          const { count } = await supabase
+            .from('comments')
             .select('*', { count: 'exact', head: true })
             .eq('video_id', videoId);
           cb(count || 0);

@@ -9,6 +9,7 @@ import { trackEvent, ANALYTICS_EVENTS } from '@short-video/shared-utils';
         <h3>{{video.title}}</h3>
         <video width="320" height="240" controls [src]="video.src"></video>
         <div>Likes: {{video.likes || 0}}</div>
+        <div>Comments: {{video.comments || 0}}</div>
         <sv-button (clicked)="like(video)">Like</sv-button>
       </div>
       <div *ngIf="loading" class="loading">Loading...</div>
@@ -57,9 +58,10 @@ export class FeedComponent implements AfterViewInit {
     this.loading = true;
     this.videoService.getVideos(this.page++).then(newVideos => {
       this.videos = this.videos.concat(newVideos);
-      newVideos.forEach(v =>
-        this.videoService.onLikes(v.id, count => (v.likes = count))
-      );
+      newVideos.forEach(v => {
+        this.videoService.onLikes(v.id, count => (v.likes = count));
+        this.videoService.onCommentsCount(v.id, count => (v.comments = count));
+      });
       this.loading = false;
     });
   }

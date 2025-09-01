@@ -1,0 +1,36 @@
+{
+  "name": "player",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "start": "webpack serve --config webpack.config.js --mode development --open",
+    "build": "webpack --config webpack.config.js --mode production"
+  },
+  "dependencies": {
+    "@angular/animations": "^16.0.0",
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/forms": "^16.0.0",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/platform-browser-dynamic": "^16.0.0",
+    "@angular/router": "^16.0.0",
+    "hls.js": "^1.4.12",
+    "player.js": "^0.1.0"
+  },
+  "devDependencies": {
+    "@angular-architects/module-federation": "^16.0.0",
+    "typescript": "^5.0.0",
+    "ts-loader": "^9.5.0",
+    "html-webpack-plugin": "^5.5.0",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "postcss": "^8.4.27",
+    "postcss-loader": "^7.3.2",
+    "tailwindcss": "^3.3.2",
+    "autoprefixer": "^10.4.14",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

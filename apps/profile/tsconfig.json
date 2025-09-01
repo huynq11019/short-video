@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "outDir": "./dist"
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*"]
+}

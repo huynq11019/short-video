@@ -1,0 +1,9 @@
+{
+  "name": "@short-video/shared-utils",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "@short-video/event-bus": "workspace:*"
+  }
+}
